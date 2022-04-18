@@ -1,13 +1,84 @@
-<h5>Fill form below</h5>
 <form>
-  <label for="username" class="form-label mt-4">GitHub Username</label>
-  <div class="form-group d-flex">
+  <br />
+  <br />
+  <br />
+  <div class="search form-group">
     <input
       type="text"
       class="form-control me-sm-2"
-      id="username"
-      placeholder="Enter GitHub Username"
+      id="searchName"
+      placeholder="Enter GitHub Username e.g. MutheuLinet"
+      #searchName
     />
-    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    <br />
+    <button
+      (click)="searchUser(searchName.value)"
+      (click)="searchRepos(searchName.value)"
+      class="btn btn-primary my-2 my-sm-0 btn-sm"
+      type="submit"
+    >
+      Search
+    </button>
   </div>
 </form>
+<br />
+<div class="search">
+  <img
+    src="{{ _user.avatar_url }}"
+    style="border-radius: 30%; height: 100px"
+    alt="Profile-picture"
+  />
+  <br />
+  <br />
+  <div>
+    <h4>
+      UserName: <span appHighlight>{{ _user.login }}</span>
+    </h4>
+    <h5>Followers: {{ _user.followers }}</h5>
+    <h5>Following: {{ _user.following }}</h5>
+    <h5>Created on: {{ _user.created_at | date }}</h5>
+    <br />
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="tooltip"
+      data-bs-placement="left"
+      title="Tooltip on left"
+    >
+      <a href="{{ _user.html_url }}" class="card-link"
+        >View Profile&nbsp;
+        <i class="fa fa-arrow-circle-right" style="font-size: 16px"></i
+      ></a>
+    </button>
+  </div>
+</div>
+<br />
+<br />
+<div
+  *ngFor="let repository of searchService._repositoryItems; let i = index"
+  class="d-inline-flex justify-content-around card text-white border-light mb-3"
+  style="max-width: 20rem"
+  id="cards"
+>
+  <div class="card-header" appHighlight>Repository: {{ repository.name }}</div>
+  <div class="card-body">
+    <h4 class="card-title"></h4>
+    <p class="card-text">Description: {{ repository.description }}</p>
+    <p>Created on: {{ repository.created_at | dateChanger }}</p>
+  </div>
+  <div class="card-footer">
+    <button
+      type="button"
+      class="btn btn-dark rounded-pill"
+      data-bs-toggle="tooltip"
+      data-bs-placement="left"
+      title="Tooltip on left"
+      id="btn"
+    >
+      <a href="{{ repository.html_url }}" class="card-link"
+        >See More &nbsp;
+        <i class="fa fa-arrow-circle-right" style="font-size: 16px"></i
+      ></a>
+    </button>
+  </div>
+</div>
