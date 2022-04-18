@@ -12,6 +12,7 @@ import { RepoSearchService } from './services/repo-search.service';
 import { GithubService } from './services/github.service';
 import { HighlightDirective } from './directives/highlight.directive';
 import { DateChangerPipe } from './pipes/date-changer.pipe';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DateChangerPipe } from './pipes/date-changer.pipe';
     NavbarComponent,
     RepoFormComponent,
     HighlightDirective,
-    DateChangerPipe
+    DateChangerPipe,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
