@@ -3,10 +3,3 @@ export class Repository {
 
     }
 }
-// export class Repos {
-//     constructor(public name: string, public description: string, public created_at: Date, 
-
-// public html_url: string, public forks: number, public watchers_count:number, public language:string) {
-
-//     }
-// }
