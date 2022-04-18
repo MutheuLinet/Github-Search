@@ -1,0 +1,48 @@
+<form>
+  <div class="form-group search">
+    <input
+      type="text"
+      class="form-control me-sm-2 search"
+      id="searchName"
+      placeholder="Enter Public GitHub Repository e.g. Hello-World"
+      #searchRep
+    />
+
+    <button
+      (click)="searchRepo(searchRep.value)"
+      class="btn btn-primary my-2 my-sm-0"
+      type="submit"
+    >
+      Search
+    </button>
+  </div>
+</form>
+<div
+  *ngFor="let item of _repos.items; let i = index"
+  class="d-inline-flex justify-content-around card text-white border-light mb-3"
+  style="max-width: 20rem"
+  id="cards"
+>
+  <div class="card-header" appHighlight>Repository: {{ item.full_name }}</div>
+  <div class="card-body">
+    <h4 class="card-title"></h4>
+    <p class="card-text">Description: {{ item.description }}</p>
+
+    <p>Language: {{ item.language }}</p>
+  </div>
+  <div class="card-footer">
+    <button
+      type="button"
+      class="btn btn-dark rounded-pill"
+      data-bs-toggle="tooltip"
+      data-bs-placement="left"
+      title="Tooltip on left"
+      id="btn"
+    >
+      <a href="{{ item.html_url }}" class="card-link"
+        >View &nbsp;
+        <i class="fa fa-arrow-circle-right" style="font-size: 16px"></i
+      ></a>
+    </button>
+  </div>
+</div>
